@@ -1,0 +1,27 @@
+<div>
+  <h2></h2>
+
+  <form action="/celebrities/create" method="post">
+
+    <label for="name">Nombre</label>
+    <input type="text" name="name" value="{{previousNameValue}}" />
+    <br />
+    <label for="occupation">Ocupacion</label>
+    <input type="text" name="occupation" value="{{previousOccupationValue}}" />
+    <br />
+    <label for="catchPhrase">Frase estupida</label>
+    <input
+      type="text"
+      name="catchPhrase"
+      value="{{previousCatchPhraseValue}}"
+    />
+    <br />
+    <button>Agregar</button>
+
+    {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+    {{/if}}
+    
+  </form>
+
+</div>
