@@ -1,7 +1,7 @@
 //  Add your code here
-const mongooose = require("mongoose")
+const mongoose = require("mongoose")
 
-const celebritySchema = new mongooose.Schema({
+const celebritySchema = new mongoose.Schema({
 
     name: String,
     occupation: String,
@@ -9,6 +9,6 @@ const celebritySchema = new mongooose.Schema({
 })
 
 
-const Celebrity = mongooose.model("Celebrity", celebritySchema)
+const Celebrity = mongoose.model("Celebrity", celebritySchema)
 
 module.exports = Celebrity

@@ -56,6 +56,19 @@ if( name === "" || occupation === "" || catchPhrase === "") {
 })
 
 
+// GET Show all celebrities
+
+router.get("/", async (req, res, next) => {
+
+    try {
+       const eachCelebrity = await Celebrity.find().select({name: 1})
+       res.render("celebrities/celebrities.hbs", {
+        eachCelebrity
+       })
+    } catch (error) {
+       next(error) 
+    }
+})
 
 
 

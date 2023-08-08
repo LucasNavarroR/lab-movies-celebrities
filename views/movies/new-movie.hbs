@@ -1,0 +1,41 @@
+<div>
+
+  <h3>Crear nueva película</h3>
+
+  <form action="/movies/create" method="post">
+
+    <label for="title">Título</label>
+      <input type="text" name="title" value="{{previousTitleValue}}"/>
+
+<br>
+
+    <label for="genre">Género</label>
+      <input type="text" name="genre" value="{{previousGenreValue}}"/ >
+
+<br>
+
+    <label for="plot">Trama</label>
+      <input type="text" name="plot" value="{{previousPlotValue}}"/>
+
+<br>
+
+    <label for="cast">Cast</label>
+    <select name="cast" multiple value="{{previousCastValue}}">
+
+{{#each eachCharacter}}
+
+<option value="{{_id}}">{{name}}</option>
+
+{{/each}}
+
+
+
+    </select>
+
+    <br>
+
+      <button>Agregar película</button>
+
+  </form>
+
+</div>
