@@ -17,10 +17,13 @@
     {{/each}}
  </p>
 
+<a href="/movies/{{this.movieDetails._id}}/edit">
+<button>Actualizar</button>
+</a>
+
+
 <form action="/movies/{{movieDetails._id}}/delete" method="post">
-
 <button>Delete</button>
-
 </form>
     
  

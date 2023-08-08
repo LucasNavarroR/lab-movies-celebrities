@@ -94,4 +94,51 @@ res.redirect("/movies")
 
 })
 
+//GET show a form to edit a movie
+router.get("/:moviesId/edit", async (req, res, next) => {
+
+    try {
+      const thisMovie = await Movie.findById(req.params.moviesId)  
+      const allCelebrities = await Celebrity.find().select({name: 1})
+
+      const cloneAllCelebrities = JSON.parse( JSON.stringify(allCelebrities) )
+      console.log(thisMovie)
+      cloneAllCelebrities.forEach((cadaCelebrity) => {
+      if (thisMovie.cast.toString() === cadaCelebrity._id.toString()) {
+       console.log("tu celebrity es:", cadaCelebrity)
+       cadaCelebrity.isSelected = true
+      }
+      })
+
+        res.render("movies/edit-movie.hbs", {
+        thisMovie,
+        allCelebrities: cloneAllCelebrities
+      })
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+//POST Send the data from the form to this route to update the specific movie
+router.post("/:moviesId/edit", (req, res, next) => {
+
+    const movieId = req.params.moviesId
+    const {title, genre, plot, cast} = req.body
+    
+    Movie.findByIdAndUpdate(movieId, {
+        title,
+        genre,
+        plot,
+        cast
+    })
+    .then(() => {
+    res.redirect("/movies")
+    })
+    .catch((error) => {
+        next(error)
+    })
+})
+
+
 module.exports = router;

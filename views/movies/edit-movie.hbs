@@ -1,0 +1,42 @@
+<div>
+
+  <h3>PATATAAAAAA</h3>
+
+  <form action="/movies/{{thisMovie._id}}/edit" method="post">
+
+    <label for="title">Título</label>
+      <input type="text" name="title" value="{{thisMovie.title}}"/>
+
+<br>
+
+    <label for="genre">Género</label>
+      <input type="text" name="genre" value="{{thisMovie.genre}}"/ >
+
+<br>
+
+    <label for="plot">Trama</label>
+      <input type="text" name="plot" value="{{thisMovie.plot}}"/>
+
+<br>
+
+    <label for="cast">Cast</label>
+    <select name="cast" multiple>
+
+{{#each allCelebrities}}
+
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+{{else}}
+<option value="{{_id}}">{{name}}</option>
+{{/if}}
+{{/each}}
+
+    </select>
+
+    <br>
+
+      <button>Actualizar</button>
+
+  </form>
+
+</div>
